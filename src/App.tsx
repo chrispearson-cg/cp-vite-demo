@@ -3,13 +3,17 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Banner from './components/Banner'
+import ThemeToggle from './components/ThemeToggle'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-    <Banner />
+    <div className="row">
+        <div className="col-2"><Banner /></div>
+        <div className="col-2 offset-8 align-self-end"><ThemeToggle /></div>
+    </div>
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />

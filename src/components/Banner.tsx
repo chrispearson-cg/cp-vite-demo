@@ -4,7 +4,7 @@ import styles from './Banner.module.scss';
 const Banner = () => {
     return (
         <>
-        <header className="row p-3">
+        <header className="p-3">
             <img src={logo} alt="Prism Logo" className={styles.logo}/>
         </header>
         </>
