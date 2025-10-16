@@ -1,11 +1,11 @@
 ﻿import logo from '../assets/prism.png';
-import logoClass from './Banner.module.scss';
+import styles from './Banner.module.scss';
 
 const Banner = () => {
     return (
         <>
-        <header>
-            <img src={logo} alt="Prism Logo" className={logoClass.logo}/>
+        <header className="row p-3">
+            <img src={logo} alt="Prism Logo" className={styles.logo}/>
         </header>
         </>
     );
