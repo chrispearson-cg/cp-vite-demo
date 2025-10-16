@@ -10,12 +10,6 @@ const setStoredTheme = (theme: string) => localStorage.setItem(themeKey, theme)
 const ThemeToggle = () => {
     const [theme, setTheme] = useState(light);
 
-    function toggleTheme() {
-        const newTheme = theme === light ? dark : light;
-        setStoredTheme(newTheme);
-        setTheme(newTheme);
-    }
-
     useEffect(() => {
         const savedTheme = getStoredTheme();
         if (savedTheme) {
@@ -26,6 +20,12 @@ const ThemeToggle = () => {
     useEffect(() => {
         document.body.setAttribute('data-bs-theme', theme);
     }, [theme]);
+
+    const toggleTheme = () => {
+        const newTheme = theme === light ? dark : light;
+        setStoredTheme(newTheme);
+        setTheme(newTheme);
+    }
 
     return (
         <button onClick={toggleTheme} className="btn btn-secondary">
