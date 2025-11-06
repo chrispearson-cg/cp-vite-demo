@@ -1,37 +1,25 @@
-﻿import { useEffect, useState } from "react";
+﻿import { IconButton } from '@mui/material';
+import LightIcon from '@mui/icons-material/LightMode';
+import DarkIcon from '@mui/icons-material/DarkMode';
 
-const light = "light";
-const dark = "dark";
-const themeKey = "theme"
+type ThemeToggleProps = {
+  isDarkTheme: boolean;
+  toggleTheme: () => void;
+};
 
-const getStoredTheme = () => localStorage.getItem(themeKey)
-const setStoredTheme = (theme: string) => localStorage.setItem(themeKey, theme)
-
-const ThemeToggle = () => {
-    const [theme, setTheme] = useState(light);
-
-    useEffect(() => {
-        const savedTheme = getStoredTheme();
-        if (savedTheme) {
-            setTheme(savedTheme);
-        }
-    }, []);
-
-    useEffect(() => {
-        document.body.setAttribute('data-bs-theme', theme);
-    }, [theme]);
-
-    const toggleTheme = () => {
-        const newTheme = theme === light ? dark : light;
-        setStoredTheme(newTheme);
-        setTheme(newTheme);
-    }
-
+const ThemeToggle = ({isDarkTheme, toggleTheme}: ThemeToggleProps) => {
+  if (isDarkTheme) {
     return (
-        <button onClick={toggleTheme} className="btn btn-secondary">
-            {theme === light ? "☀" : "🌓"}
-        </button>
-    )
-}
+      <IconButton onClick={toggleTheme}>
+        <DarkIcon />
+      </IconButton>
+    );
+  }
+  return (
+    <IconButton onClick={toggleTheme}>
+      <LightIcon />
+    </IconButton>
+  );
+};
 
-export default ThemeToggle
+export default ThemeToggle;

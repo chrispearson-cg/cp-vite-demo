@@ -1,10 +1,15 @@
 ﻿import { AppBar, Avatar, Box, IconButton, Toolbar } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
-import LightIcon from '@mui/icons-material/LightMode';
 import { deepPurple } from '@mui/material/colors';
+import ThemeToggle from './ThemeToggle';
 
-const TitleBar = () => {
+interface TitleBarProps {
+  isDarkTheme: boolean;
+  toggleTheme: () => void;
+}
+
+const TitleBar = ({isDarkTheme, toggleTheme}: TitleBarProps) => {
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
@@ -22,17 +27,10 @@ const TitleBar = () => {
             <IconButton aria-label="home" color="inherit" size="small">
               <HomeIcon /> Home
             </IconButton>
-            <IconButton
-              aria-label="settings"
-              color="inherit"
-              size="small"
-              sx={{ marginLeft: 'auto' }}
-            >
-              <LightIcon />
-            </IconButton>
-            <Avatar alt="Chris Pearson" sx={{ bgcolor: deepPurple[500] }}>
+            <Avatar alt="Chris Pearson" sx={{ bgcolor: deepPurple[500], marginLeft: 'auto' }}>
               CP
             </Avatar>
+            <ThemeToggle isDarkTheme={isDarkTheme} toggleTheme={toggleTheme} />
           </Toolbar>
         </AppBar>
       </Box>
