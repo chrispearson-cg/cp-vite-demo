@@ -46,9 +46,7 @@ const App = () => {
             toggleDrawer={toggleDrawer}
           />
           <SideDrawer isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} />
-          <MainContent>
-            This is the main content area.
-          </MainContent>
+          <MainContent />
         </Container>
       </ThemeProvider>
     </>
