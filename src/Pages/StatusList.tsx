@@ -1,6 +1,6 @@
-﻿import type { HealthCheckResult } from '../../hooks/useHealth';
-import useHealth from '../../hooks/useHealth';
-import StatusCheck from './StatusCheck';
+﻿import StatusCheck from "../components/HealthCheck/StatusCheck";
+import useHealth, { type HealthCheckResult } from "../hooks/useHealth";
+
 
 const StatusList = () => {
   const status = useHealth();

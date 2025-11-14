@@ -5,7 +5,9 @@ import { Container } from '@mui/material';
 import type { ThemeOptions } from '@mui/material/styles';
 import { useState } from 'react';
 import SideDrawer from './components/SideDrawer';
-import MainContent from './components/MainContent';
+import { BrowserRouter, Routes, Route } from 'react-router';
+import StatusList from './Pages/StatusList';
+import IndexContent from './Pages/IndexContent';
 
 // Define theme settings
 const light: ThemeOptions = {
@@ -39,15 +41,25 @@ const App = () => {
       <ThemeProvider
         theme={isDarkTheme ? createTheme(dark) : createTheme(light)}
       >
-        <Container maxWidth={false} disableGutters={true}>
-          <TitleBar
-            isDarkTheme={isDarkTheme}
-            toggleTheme={changeTheme}
-            toggleDrawer={toggleDrawer}
-          />
-          <SideDrawer isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} />
-          <MainContent />
-        </Container>
+        <BrowserRouter>
+          <Container maxWidth={false} disableGutters={true}>
+            <TitleBar
+              isDarkTheme={isDarkTheme}
+              toggleTheme={changeTheme}
+              toggleDrawer={toggleDrawer}
+            />
+            <SideDrawer
+              isDrawerOpen={isDrawerOpen}
+              toggleDrawer={toggleDrawer}
+            />
+          </Container>
+          <Container maxWidth="lg">
+            <Routes>
+              <Route path="/" element={<IndexContent />} />
+              <Route path="/status" element={<StatusList />} />
+            </Routes>
+          </Container>
+        </BrowserRouter>
       </ThemeProvider>
     </>
   );

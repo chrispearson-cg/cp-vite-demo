@@ -7,10 +7,11 @@
 } from '@mui/material';
 import Drawer from '@mui/material/Drawer';
 import FolderIcon from '@mui/icons-material/Folder';
-import PersonIcon from '@mui/icons-material/Person';
+import StatusIcon from '@mui/icons-material/CheckCircleOutline';
 import DrawerHeader from './DrawerHeader';
 import Copyright from './Copright';
 import Version from './Version';
+import { useNavigate } from 'react-router';
 
 interface SideDrawerProps {
   isDrawerOpen: boolean;
@@ -21,16 +22,23 @@ interface SideDrawerProps {
 // Maybe using a custom hook like useMenuItems() which would be able to look up the user and permissions?
 const items = [
   {
-    text: 'Case Checking',
+    text: 'Index',
     icon: <FolderIcon />,
+    url: '/',
   },
   {
-    text: 'User Management',
-    icon: <PersonIcon />,
+    text: 'Status',
+    icon: <StatusIcon />,
+    url: '/status',
   },
 ];
 
 const SideDrawer = ({ isDrawerOpen, toggleDrawer }: SideDrawerProps) => {
+  const navigate = useNavigate();
+  const handleNavigation = (url: string) => {
+    toggleDrawer();
+    navigate(url);
+  };
   return (
     <>
       <Drawer
@@ -46,7 +54,7 @@ const SideDrawer = ({ isDrawerOpen, toggleDrawer }: SideDrawerProps) => {
           </DrawerHeader>
           <List sx={{ flexGrow: 1 }}>
             {items.map((item, index) => (
-              <ListItemButton key={index}>
+              <ListItemButton key={index} onClick={() => handleNavigation(item.url)}>
                 <ListItemIcon>
                   {item.icon}
                   {item.text}
