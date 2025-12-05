@@ -15,7 +15,7 @@ const ToDoItem = ({ todo }: { todo: TodoItem }) => {
             borderRadius: 2,
           }}
         >
-          <Avatar sizes='xs'>{todo.id}</Avatar> <ToDoStatus status={todo.status} />
+          <Avatar sizes='xs'>{todo.id}</Avatar> <ToDoStatus isCompleted={todo.isCompleted} />
           <Typography>{todo.description}</Typography>
         </Box>
       </Item>

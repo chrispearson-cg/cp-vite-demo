@@ -1,13 +1,12 @@
 ﻿import { Chip } from '@mui/material';
-import { TodoStatusLabels } from '../../models/todo';
 
-const ToDoStatus = ({ status }: { status: number }) => {
+const ToDoStatus = ({ isCompleted }: { isCompleted: boolean }) => {
   return (
     <>
       <Chip
-        label={TodoStatusLabels[status]}
+        label={isCompleted ? 'Complete' : 'Active'}
         color={
-          status === 1 // Complete
+          isCompleted
             ? 'success'
             : 'default'
         }

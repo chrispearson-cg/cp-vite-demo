@@ -16,19 +16,19 @@ public class InMemoryTodoRepository : ITodoRepository
             {
                 Id = _nextId++,
                 Description = "Complete project documentation",
-                Status = TodoStatus.Complete
+                IsCompleted = true,
             },
             new TodoItem
             {
                 Id = _nextId++,
                 Description = "Review pull requests",
-                Status = TodoStatus.Active
+                IsCompleted = false,
             },
             new TodoItem
             {
                 Id = _nextId++,
                 Description = "Deploy to production",
-                Status = TodoStatus.Active
+                IsCompleted = false,
             }
         };
     }
@@ -49,7 +49,7 @@ public class InMemoryTodoRepository : ITodoRepository
         {
             Id = _nextId++,
             Description = request.Description,
-            Status = request.Status
+            IsCompleted = false,
         };
 
         _todos.Add(todo);
@@ -65,7 +65,7 @@ public class InMemoryTodoRepository : ITodoRepository
         }
 
         todo.Description = request.Description;
-        todo.Status = request.Status;
+        todo.IsCompleted = request.IsCompleted;
 
         return todo;
     }
