@@ -8,6 +8,7 @@ import SideDrawer from './components/SideDrawer';
 import { BrowserRouter, Routes, Route } from 'react-router';
 import StatusList from './Pages/StatusList';
 import IndexContent from './Pages/IndexContent';
+import Todo from './Pages/ToDo';
 
 // Define theme settings
 const light: ThemeOptions = {
@@ -57,6 +58,8 @@ const App = () => {
             <Routes>
               <Route path="/" element={<IndexContent />} />
               <Route path="/status" element={<StatusList />} />
+              <Route path="/todo" element={<Todo />} />
+              <Route path="*" element={<div>Page Not Found</div>} />
             </Routes>
           </Container>
         </BrowserRouter>

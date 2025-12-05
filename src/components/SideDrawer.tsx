@@ -8,6 +8,7 @@
 import Drawer from '@mui/material/Drawer';
 import FolderIcon from '@mui/icons-material/Folder';
 import StatusIcon from '@mui/icons-material/CheckCircleOutline';
+import CheckboxIcon from '@mui/icons-material/CheckBox';
 import DrawerHeader from './DrawerHeader';
 import Copyright from './Copright';
 import Version from './Version';
@@ -31,6 +32,11 @@ const items = [
     icon: <StatusIcon />,
     url: '/status',
   },
+  {
+    text: 'To Do',
+    icon: <CheckboxIcon />,
+    url: '/todo',
+  }
 ];
 
 const SideDrawer = ({ isDrawerOpen, toggleDrawer }: SideDrawerProps) => {
