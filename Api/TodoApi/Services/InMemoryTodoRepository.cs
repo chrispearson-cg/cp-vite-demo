@@ -16,19 +16,19 @@ public class InMemoryTodoRepository : ITodoRepository
             {
                 Id = _nextId++,
                 Description = "Complete project documentation",
-                Status = TodoStatus.Active
+                Status = TodoStatus.Complete
             },
             new TodoItem
             {
                 Id = _nextId++,
                 Description = "Review pull requests",
-                Status = TodoStatus.Pending
+                Status = TodoStatus.Active
             },
             new TodoItem
             {
                 Id = _nextId++,
                 Description = "Deploy to production",
-                Status = TodoStatus.Pending
+                Status = TodoStatus.Active
             }
         };
     }

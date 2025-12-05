@@ -7,10 +7,8 @@ const ToDoStatus = ({ status }: { status: number }) => {
       <Chip
         label={TodoStatusLabels[status]}
         color={
-          status === 2 // Complete
+          status === 1 // Complete
             ? 'success'
-            : status === 1 // Active
-            ? 'warning'
             : 'default'
         }
       />

@@ -2,7 +2,6 @@
 
 public enum TodoStatus
 {
-    Pending,
     Active,
     Complete
 }
