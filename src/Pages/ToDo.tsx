@@ -1,5 +1,4 @@
-﻿import { Typography } from '@mui/material';
-import ToDoList from '../components/Todo/ToDoList';
+﻿import ToDoList from '../components/Todo/ToDoList';
 import useTodo from '../hooks/useTodo';
 
 const ToDo = () => {
@@ -7,9 +6,7 @@ const ToDo = () => {
 
   return (
     <>
-      <Typography variant="h2" gutterBottom>
-        ToDo List
-      </Typography>
+      <h1>ToDo List</h1>
       <ToDoList todos={todos} />
     </>
   );

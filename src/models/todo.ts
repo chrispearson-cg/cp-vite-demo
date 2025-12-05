@@ -1,13 +1,18 @@
-﻿export const TodoStatus = {
-  Pending: 0,
-  Active: 1,
-  Complete: 2
-} as const;
+﻿
+// Really not happy with this but as good as I can do with out enabling
+// enums which I don't know if I should.
 
-export type TodoStatus = typeof TodoStatus[keyof typeof TodoStatus];
+export type TodoStatus = 'Pending' | 'Active' | 'Complete';
+
+export const TodoStatusLabels: Record<number, TodoStatus> = {
+    0: 'Pending',
+    1: 'Active',
+    2: 'Complete',
+};
+
 
 export interface TodoItem {
-  id: number;
-  description: string;
-  status: TodoStatus;
+    id: number;
+    description: string;
+    status: number;
 }

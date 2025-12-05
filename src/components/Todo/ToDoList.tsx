@@ -1,14 +1,22 @@
-﻿import type { TodoItem } from '../../models/todo';
+﻿import { Stack } from '@mui/material';
+import type { TodoItem } from '../../models/todo';
+import ToDoItem from './ToDoItem';
 
 const ToDoList = ({ todos }: { todos: TodoItem[] }) => {
   return (
     <>
-      <div>To Do List Component</div>
-      {todos.map((todo) => (
-        <div key={todo.id}>
-          <h3>{todo.description}</h3>
-        </div>
-      ))}
+      <Stack
+        spacing={2}
+        direction={'column'}
+        sx={{
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        {todos.map((todo) => (
+          <ToDoItem key={todo.id} todo={todo} />
+        ))}
+      </Stack>
     </>
   );
 };
