@@ -6,15 +6,16 @@ const useTodo = () => {
     const [todos, setTodos] = useState<TodoItem[]>([]);
     const [error, setError] = useState<Error | null>(null);
 
-    const setTodosWrapper = (todos: TodoItem[]) => {
-        setTodos(todos);
-    }
-
     useEffect(() => {
         const fetchTodos = async () => {
 
             try {
                 const response = await fetch("http://localhost:5000/api/todos");
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
                 const todos = await response.json();
                 setTodos(todos);
                 setError(null);
@@ -28,7 +29,7 @@ const useTodo = () => {
         fetchTodos();
     }, []);
 
-    return { todos, setTodos: setTodosWrapper, error };
+    return { todos, setTodos, error };
 }
 
 export default useTodo;
