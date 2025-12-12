@@ -9,7 +9,6 @@ interface AddTodoProps {
 const AddTodo = ({ addTodo }: AddTodoProps) => {
 
   const handleSubmit = async (formData: React.FormEvent<HTMLFormElement>) => {
-    formData.preventDefault();
     await addTodo({
       description: formData.currentTarget.description.value,
     });
