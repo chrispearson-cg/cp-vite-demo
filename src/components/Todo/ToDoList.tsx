@@ -1,4 +1,5 @@
 ﻿import { FormControlLabel, Radio, RadioGroup, Stack } from '@mui/material';
+import { useState } from 'react';
 import type { TodoItem } from '../../models/todo';
 import ToDoItem from './ToDoItem';
 
@@ -11,10 +12,23 @@ const ToDoList = ({
   todos: TodoItem[];
   updateTodo: (todo: TodoItem) => void;
 }) => {
+  const [selectedStatus, setSelectedStatus] = useState<string>('All');
+
+  const filteredTodos = todos.filter((todo) => {
+    if (selectedStatus === 'All') return true;
+    if (selectedStatus === 'Completed') return todo.isCompleted;
+    if (selectedStatus === 'Active') return !todo.isCompleted;
+    return true;
+  });
+
   return (
     <>
       <div>
-        <RadioGroup row defaultValue="All">
+        <RadioGroup 
+          row 
+          value={selectedStatus}
+          onChange={(e) => setSelectedStatus(e.target.value)}
+        >
           {status.map((stat) => (
             <FormControlLabel
               key={stat}
@@ -33,7 +47,7 @@ const ToDoList = ({
           alignItems: 'center',
         }}
       >
-        {todos.map((todo) => (
+        {filteredTodos.map((todo) => (
           <ToDoItem key={todo.id} todo={todo} updateTodo={updateTodo} />
         ))}
       </Stack>
