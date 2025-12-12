@@ -28,7 +28,7 @@ const useTodo = () => {
     }, []);
 
     const postTodo = async (todo: CreateTodoRequest) => {
-        const rsp = await fetch(baseUri, {
+        const response = await fetch(baseUri, {
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -36,15 +36,32 @@ const useTodo = () => {
             },
             body: JSON.stringify(todo),
         });
-        return await rsp.json();
+        return await response.json();
     };
+
+    const updatedTodo = async (todo: TodoItem) => {
+        const response = await fetch(`${baseUri}/${todo.id}`, {
+            method: "PUT",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(todo),
+        });
+        return await response.json();
+    }
 
     const addTodo = async (todo: CreateTodoRequest) => {
         const postedTodo = await postTodo(todo);
         setTodos([...todos, postedTodo]);
     };
 
-    return { todos, setTodos: setTodosWrapper, addTodo };
+    const updateTodo = async (todo: TodoItem) => {
+        const putTodo = await updatedTodo(todo);
+        setTodos(todos.map(t => t.id === putTodo.id ? putTodo : t));
+    };
+
+    return { todos, setTodos: setTodosWrapper, addTodo, updateTodo };
 }
 
 export default useTodo;

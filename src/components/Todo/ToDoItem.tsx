@@ -3,7 +3,12 @@ import Item from '@mui/material/Stack';
 import { type TodoItem } from '../../models/todo';
 import ToDoStatus from './ToDoStatus';
 
-const ToDoItem = ({ todo }: { todo: TodoItem }) => {
+const ToDoItem = ({ todo, updateTodo }: { todo: TodoItem, updateTodo: (todo: TodoItem) => void }) => {
+  const toggleCompletion = () => {
+    todo.isCompleted = !todo.isCompleted;
+    updateTodo(todo);
+  };
+
   return (
     <>
       <Item>
@@ -19,8 +24,10 @@ const ToDoItem = ({ todo }: { todo: TodoItem }) => {
             <Grid size="grow">
               <Avatar sizes="xs">{todo.id}</Avatar>
             </Grid>
-            <Grid size="auto">
-              <ToDoStatus isCompleted={todo.isCompleted} />
+            <Grid size="auto" onClick={toggleCompletion} sx={{ cursor: 'pointer' }}>
+              <ToDoStatus
+                isCompleted={todo.isCompleted}
+              />
             </Grid>
           </Grid>
           <Typography>{todo.description}</Typography>

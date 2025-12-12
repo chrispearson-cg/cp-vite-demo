@@ -2,7 +2,7 @@
 import type { TodoItem } from '../../models/todo';
 import ToDoItem from './ToDoItem';
 
-const ToDoList = ({ todos }: { todos: TodoItem[] }) => {
+const ToDoList = ({ todos, updateTodo }: { todos: TodoItem[], updateTodo: (todo: TodoItem) => void }) => {
   return (
     <>
       <Stack
@@ -14,7 +14,7 @@ const ToDoList = ({ todos }: { todos: TodoItem[] }) => {
         }}
       >
         {todos.map((todo) => (
-          <ToDoItem key={todo.id} todo={todo} />
+          <ToDoItem key={todo.id} todo={todo} updateTodo={updateTodo} />
         ))}
       </Stack>
     </>
