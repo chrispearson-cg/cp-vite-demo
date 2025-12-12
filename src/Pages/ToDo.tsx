@@ -1,4 +1,5 @@
-﻿import AddTodo from '../components/Todo/AddToDo';
+﻿import PageTitle from '../components/PageTitle';
+import AddTodo from '../components/Todo/AddToDo';
 import ToDoList from '../components/Todo/ToDoList';
 import useTodo from '../hooks/useTodo';
 
@@ -7,7 +8,7 @@ const ToDo = () => {
 
   return (
     <>
-      <h1>ToDo List</h1>
+      <PageTitle title="ToDo List" />
       <AddTodo addTodo={addTodo} />
       <ToDoList todos={todos} updateTodo={updateTodo} />
     </>
