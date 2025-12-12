@@ -4,3 +4,7 @@ export interface TodoItem {
     description: string;
     isCompleted: boolean;
 }
+
+export interface CreateTodoRequest {
+    description: string;
+}
