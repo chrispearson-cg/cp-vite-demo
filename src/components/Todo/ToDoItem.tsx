@@ -1,4 +1,4 @@
-﻿import { Avatar, Box, Typography } from '@mui/material';
+﻿import { Avatar, Box, Grid, Typography } from '@mui/material';
 import Item from '@mui/material/Stack';
 import { type TodoItem } from '../../models/todo';
 import ToDoStatus from './ToDoStatus';
@@ -15,7 +15,14 @@ const ToDoItem = ({ todo }: { todo: TodoItem }) => {
             borderRadius: 2,
           }}
         >
-          <Avatar sizes='xs'>{todo.id}</Avatar> <ToDoStatus isCompleted={todo.isCompleted} />
+          <Grid container spacing={2}>
+            <Grid size="grow">
+              <Avatar sizes="xs">{todo.id}</Avatar>
+            </Grid>
+            <Grid size="auto">
+              <ToDoStatus isCompleted={todo.isCompleted} />
+            </Grid>
+          </Grid>
           <Typography>{todo.description}</Typography>
         </Box>
       </Item>

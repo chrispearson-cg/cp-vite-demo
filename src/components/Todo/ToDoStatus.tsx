@@ -8,7 +8,7 @@ const ToDoStatus = ({ isCompleted }: { isCompleted: boolean }) => {
         color={
           isCompleted
             ? 'success'
-            : 'default'
+            : 'primary'
         }
       />
     </>
